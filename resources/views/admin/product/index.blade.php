@@ -34,7 +34,7 @@
         <td class="py-2 px-4 border-b">{{$product->category->title}}</td>
         <td class="py-2 px-4 border-b">{{$product->status}}</td>
         <td class="py-2 px-4 border-b">{{$product->description}}</td>
-        <td class="py-2 px-4 border-b"><img src="{{asset('uploads/product/'.$product->image);}}" alt="{{$product->meta_keyword}}" class="w-10 h-10 object-cover rounded-full"></td>
+        <td class="py-2 px-4 border-b"><img src="{{asset('uploads/product/thumbnail/thumbnail_'.$product->image);}}" alt="{{$product->meta_keyword}}" class="w-10 h-10 object-cover rounded-full"></td>
         <td class="py-2 px-4 border-b">
             <a href="product/edit/{{$product->id}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2">Update</a>
            

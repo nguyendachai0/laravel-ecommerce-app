@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -19,8 +20,17 @@ use App\Http\Controllers\Admin\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $products = (new App\Http\Controllers\ProductController)->getTop8();
+    $categories = (new App\Http\Controllers\CategoryController)->getTop5();
+    return view('home', [
+        'products' => $products,
+        'categories' => $categories,
+
+    ]);
 });
+Route::get('/login/google', [GoogleAuthController::class, 'redirect']);
+Route::get('/login/google/callback', [GoogleAuthController::class, 'callbackGoogle'])->name('google.auth');
 // Admin must be authenticated 
 Route::middleware(['auth.redirect'])->group(function () {
     // Controller for role admin

@@ -32,7 +32,7 @@
         <td class="py-2 px-4 border-b">{{$category->title}}</td>
         <td class="py-2 px-4 border-b">{{$category->status}}</td>
         <td class="py-2 px-4 border-b">{{$category->description}}</td>
-        <td class="py-2 px-4 border-b"><img src="{{asset('uploads/category/'.$category->image);}}" alt="{{$category->meta_keyword}}" class="w-10 h-10 object-cover rounded-full"></td>
+        <td class="py-2 px-4 border-b"><img src="{{asset('uploads/category/thumbnail/thumbnail_'.$category->image);}}" alt="{{$category->meta_keyword}}" class="w-10 h-10 object-cover rounded-full"></td>
         <td class="py-2 px-4 border-b flex">
             <a href="category/edit/{{$category->id}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2">Update</a>
            

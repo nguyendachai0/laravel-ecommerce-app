@@ -85,11 +85,21 @@ class ProductController extends Controller
         $product->description = $validatedData['description'];
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
+            // Get the uploaded file
+            $image = $request->file('image');
+            //
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $thumbnailFilename = 'thumbnail_' . $filename;
+
+            // Save the original image
+
+            // Create and save the thumbnail
+            $thumbnail = Image::make($image)->fit(100, 100);
+            $image->move('uploads/product/', $filename);
+            $thumbnail->save('uploads/product/thumbnail/' . $thumbnailFilename);
+
+            // Set the image and thumbnail filenames in the product model
             $product->image = $filename;
-            $file->move('uploads/product/', $filename);
         }
         $product->meta_title = $validatedData['meta_title'];
         $product->meta_keyword = $validatedData['meta_keyword'];

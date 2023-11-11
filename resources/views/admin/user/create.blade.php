@@ -20,7 +20,7 @@
     
             <form action="{{ url('admin/user/create') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-    
+             
                 <!-- Name -->
                 <div class="flex flex-wrap -mx-4">
                 <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
@@ -67,7 +67,7 @@
     
                 <!-- Submit Button -->
                 <div class="text-center">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">Add User</button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">Update User</button>
                 </div>
                 </div>
             </form>

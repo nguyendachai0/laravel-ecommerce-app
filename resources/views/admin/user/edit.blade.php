@@ -20,7 +20,10 @@
     
             <form action="{{ url('admin/user/update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                
+                <?php echo '<pre>';
+                var_dump($_POST);
+                echo '</pre>';
+                ?>
                 <input type="hidden" name="id" value="{{$user->id}}"/>
                 <!-- Name -->
                 <div class="flex flex-wrap -mx-4">
@@ -35,16 +38,16 @@
                     <input type="email" name="email" id="email" value="{{$user->email}}" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
                 </div>
                 {{-- Password --}}
-                <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+                {{-- <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
                     <label for="password" class="block text-sm font-medium text-gray-600 mb-2">Password</label>
                     <input type="password" name="password" id="password" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
-                </div>
+                </div> --}}
     
                    {{-- AuthPassword --}}
-                   <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+                   {{-- <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
                     <label for="password_confirmation" class="block text-sm font-medium text-gray-600 mb-2">Confirm password</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
-                </div>
+                </div> --}}
 
                  <!-- user (Assuming a select dropdown) -->
                  <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
