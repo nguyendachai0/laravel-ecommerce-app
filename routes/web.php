@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\CartItem;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\GoogleAuthController;
@@ -20,15 +22,32 @@ use App\Http\Controllers\Admin\CategoryController;
 */
 
 Route::get('/', function () {
+    $products = (new App\Http\Controllers\ProductController)->getTop10Newest();
+    $categories = (new App\Http\Controllers\CategoryController)->getLast4Categories();
+    $top1Categories =  (new App\Http\Controllers\CategoryController)->getTop1Categories();
+    $userId = auth()->id();
+    $cartItems = (new CartItem)->getCartById($userId);
 
-    $products = (new App\Http\Controllers\ProductController)->getTop8();
-    $categories = (new App\Http\Controllers\CategoryController)->getTop5();
     return view('home', [
         'products' => $products,
         'categories' => $categories,
+        'top1Categories' => $top1Categories,
+        'cartItems' => $cartItems,
 
     ]);
+})->name('home');
+
+Route::get('/product/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+
+
+Route::middleware(['auth.redirect'])->group(function () {
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.list');
+    Route::delete('/cart/delete/{cartItemId}', [CartController::class, 'delete'])->name('cart.item.delete');
+    Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/update/{cart}', [CartController::class, 'update'])->name('cart.update');
 });
+
 Route::get('/login/google', [GoogleAuthController::class, 'redirect']);
 Route::get('/login/google/callback', [GoogleAuthController::class, 'callbackGoogle'])->name('google.auth');
 // Admin must be authenticated 

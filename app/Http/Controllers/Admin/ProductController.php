@@ -42,13 +42,16 @@ class ProductController extends Controller
             //
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $thumbnailFilename = 'thumbnail_' . $filename;
-
+            $image600x690FileName = '600x690' . $filename;
             // Save the original image
 
             // Create and save the thumbnail
             $thumbnail = Image::make($image)->fit(100, 100);
+            $image600x690 = Image::make($image)->fit(600, 690);
             $image->move('uploads/product/', $filename);
             $thumbnail->save('uploads/product/thumbnail/' . $thumbnailFilename);
+            $image600x690->save('uploads/product/resized/' . $image600x690FileName);
+
 
             // Set the image and thumbnail filenames in the product model
             $product->image = $filename;
@@ -90,13 +93,16 @@ class ProductController extends Controller
             //
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $thumbnailFilename = 'thumbnail_' . $filename;
-
+            $image600x690FileName = '600x690' . $filename;
             // Save the original image
 
             // Create and save the thumbnail
             $thumbnail = Image::make($image)->fit(100, 100);
+            $image600x690 = Image::make($image)->fit(600, 690);
             $image->move('uploads/product/', $filename);
             $thumbnail->save('uploads/product/thumbnail/' . $thumbnailFilename);
+            $image600x690->save('uploads/product/resized/' . $image600x690FileName);
+
 
             // Set the image and thumbnail filenames in the product model
             $product->image = $filename;

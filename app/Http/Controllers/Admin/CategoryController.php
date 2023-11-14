@@ -38,13 +38,16 @@ class CategoryController extends Controller
             //
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $thumbnailFilename = 'thumbnail_' . $filename;
-
+            $image405x255FileName = '405x255' . $filename;
             // Save the original image
 
             // Create and save the thumbnail
             $thumbnail = Image::make($image)->fit(100, 100);
+            $image405x255 = Image::make($image)->fit(405, 255);
             $image->move('uploads/category/', $filename);
             $thumbnail->save('uploads/category/thumbnail/' . $thumbnailFilename);
+            $image405x255->save('uploads/category/resized/' . $image405x255FileName);
+
 
             // Set the image and thumbnail filenames in the category model
             $category->image = $filename;

@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function getTop8()
+    public function show($slug)
     {
-        return Product::take(8)->get();
+
+        $product = Product::findBySlug($slug);
+
+        return view('products.show', ['product' => $product]);
+    }
+    public function getTop10Newest()
+    {
+        return  Product::orderBy('created_at', 'desc')->take(10)->get();
     }
 }
