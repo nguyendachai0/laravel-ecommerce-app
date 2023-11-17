@@ -21,25 +21,18 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
+// Home page
 Route::get('/', function () {
-    $products = (new App\Http\Controllers\ProductController)->getTop10Newest();
-    $categories = (new App\Http\Controllers\CategoryController)->getLast4Categories();
-    $top1Categories =  (new App\Http\Controllers\CategoryController)->getTop1Categories();
-    $userId = auth()->id();
-    $cartItems = (new CartItem)->getCartById($userId);
+    return view('home');
+});
 
-    return view('home', [
-        'products' => $products,
-        'categories' => $categories,
-        'top1Categories' => $top1Categories,
-        'cartItems' => $cartItems,
-
-    ]);
-})->name('home');
 
 Route::get('/product/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
 
-
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+Route::post('/orders/store', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+// Route to display a specific order
+Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
 Route::middleware(['auth.redirect'])->group(function () {
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.list');

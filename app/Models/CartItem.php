@@ -29,4 +29,20 @@ class CartItem extends Model
     {
         return $this->with('product')->where('user_id', $userId)->get();
     }
+    public function getTotalItemsInCart($userId)
+    {
+        return $this->where('user_id', $userId)->sum('quantity');
+    }
+    public function getTotalPriceInCart($userId)
+    {
+        $cartItems = $this->getCartById($userId);
+        $totalPrice = 0;
+
+        foreach ($cartItems as $cartItem) {
+
+            $totalPrice += (int) $cartItem->quantity * $cartItem['product']->price;
+        }
+
+        return $totalPrice;
+    }
 }

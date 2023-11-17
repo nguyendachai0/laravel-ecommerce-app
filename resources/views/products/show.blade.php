@@ -376,53 +376,14 @@
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                     <img src="{{ asset('uploads/product/resized/600x690' . $product->image) }}" alt="">
                                 </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="{{asset('assets/images/product/default/home-1/default-2.jpg')}}" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="{{asset('assets/images/product/default/home-1/default-3.jpg')}}" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="{{asset('assets/images/product/default/home-1/default-4.jpg')}}" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="{{asset('assets/images/product/default/home-1/default-5.jpg')}}" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="{{asset('assets/images/product/default/home-1/default-6.jpg')}}" alt="">
-                                </div>
+                               
                             </div>
                         </div>
                         <!-- End Large Image -->
                         <!-- Start Thumbnail Image -->
                         <div
                             class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
-                            <div class="swiper-wrapper">
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-1.jpg')}}"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-2.jpg')}}"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-3.jpg')}}"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-4.jpg')}}"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-5.jpg')}}"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="{{asset('assets/images/product/default/home-1/default-6.jpg')}}"
-                                        alt="">
-                                </div>
-                            </div>
+                           
                             <!-- Add Arrows -->
                             <div class="gallery-thumb-arrow swiper-button-next"></div>
                             <div class="gallery-thumb-arrow swiper-button-prev"></div>
@@ -459,6 +420,8 @@
                                             class="ion-checkmark-circled"></i></span> 200 IN STOCK</div>
                             </div>
                             <!-- Product Variable Single Item -->
+
+                            
                             <div class="d-flex align-items-center ">
                                 <div class="variable-single-item ">
                                     <span>Quantity</span>

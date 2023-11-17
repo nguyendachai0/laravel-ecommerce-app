@@ -378,7 +378,7 @@
                                 <!-- Start Cart Table Head -->
                                 <thead>
                                     <tr>
-                                        <th class="product_remove">Delete</th>
+                                        
                                         <th class="product_thumb">Image</th>
                                         <th class="product_name">Product</th>
                                         <th class="product-price">Price</th>
@@ -386,28 +386,27 @@
                                         <th class="product_total">Total</th>
                                     </tr>
                                 </thead> <!-- End Cart Table Head -->
+                                <?php echo '<pre>';
+                                var_dump($orders[]);
+                                echo '</pre>';
+                                ?>
                                 <tbody>
                                     <!-- Start Cart Single Item-->
 
-                                    <?php foreach ($cartItems as $cartItem) :?>
+                                    <?php foreach ($orders as $order) :
+                               
+                                    ?>
                                     <tr>
-                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            <a href="{{ route('cart.item.delete', ['cartItemId' => $cartItem->id]) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this item?')) { document.getElementById('delete-form-{{ $cartItem->id }}').submit(); }">Delete</a>
-
-<form id="delete-form-{{ $cartItem->id }}" action="{{ route('cart.item.delete', ['cartItemId' => $cartItem->id]) }}" method="post" style="display: none;">
-    @csrf
-    @method('delete')
-</form>
-
-                                        </td>
+                                      
+                                        
                                         <td class="product_thumb"><a href="product-details-default.html"><img
-                                                    src="{{asset('uploads/product/resized/600x690'. $cartItem['product']->image)}}"
+                                                    src="{{asset('uploads/product/resized/600x690'.$order->image)}}"
                                                     alt=""></a></td>
-                                        <td class="product_name"><a href="product-details-default.html">{{$cartItem['product']->title}}</a></td>
-                                        <td class="product-price">${{$cartItem['product']->price}}</td>
+                                        <td class="product_name"><a href="product-details-default.html"></a></td>
+                                        <td class="product-price">$</td>
                                         <td class="product_quantity"><label></label> <input min="1"
-                                                max="100" value="{{$cartItem->quantity}}" type="number"></td>
-                                        <td class="product_total">${{$cartItem['product']->price * $cartItem->quantity}}</td>
+                                                max="100" value="" type="number"></td>
+                                        <td class="product_total">$</td>
                                     </tr> <!-- End Cart Single Item-->
                                     <!-- Start Cart Single Item-->
                                     <?php endforeach; ?>
@@ -482,17 +481,17 @@
                         <div class="coupon_inner">
                             <div class="cart_subtotal">
                                 <p>Subtotal</p>
-                                <p class="cart_amount">$ {{$totalPrice}}</p>
+                                <p class="cart_amount">$ </p>
                             </div>
                             <div class="cart_subtotal ">
                                 <p>Shipping</p>
-                                <p class="cart_amount"><span>Flat Rate:</span>$ {{$totalPrice}}</p>
+                                <p class="cart_amount"><span>Flat Rate:</span>$ </p>
                             </div>
                             <a href="#">Calculate shipping</a>
 
                             <div class="cart_subtotal">
                                 <p>Total</p>
-                                <p class="cart_amount">$ {{$totalPrice}}</p>
+                                <p class="cart_amount">$ </p>
                             </div>
 
 

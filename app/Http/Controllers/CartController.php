@@ -10,8 +10,15 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = CartItem::with('product')->get();
-        return view('cart', compact('cartItems'));
+        $cartItems = (new CartItem)->getCartById(auth()->id());
+        $totalItems = (new CartItem)->getTotalItemsInCart(auth()->id());
+        $totalPrice = (new CartItem)->getTotalPriceInCart(auth()->id());
+
+        return view('cart', compact(
+            'cartItems',
+            'totalItems',
+            'totalPrice',
+        ));
     }
     public function user()
     {
